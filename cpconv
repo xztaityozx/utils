@@ -5,6 +5,7 @@ function usage(){
   echo "stdinから文字列を受け取って文字コード変換して遊ぶやつ"
   echo -e "no option\tutf-8 => cp930 => cp939 => utf-8"
   echo -e "-d\t\tutf-8 => cp939 => cp930 => utf-8"
+  echo -e "-P\t\tコピペで実行できる形で出力"
   exit
 }
 
@@ -12,4 +13,5 @@ function usage(){
 [[ "$1" == "--help" ]] && usage
 
 [ "$1" == "-d" ] && iconv -f utf-8 -t cp930 | iconv -f cp939 -t utf-8 && exit
+[[ "$1" == "-P" ]] && echo "echo $(iconv -f utf-8 -t cp930 | iconv -f cp939 -t utf-8) | iconv -f utf-8 -t cp939 | iconv -f cp930 -t utf-8 | bash" && exit
 iconv -f utf-8 -t cp939 | iconv -f cp930 -t utf-8
