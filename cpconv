@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ "$1" == "-d" ] && iconv -f utf-8 -t cp930 | iconv -f cp939 -t utf-8 && exit
+iconv -f utf-8 -t cp939 | iconv -f cp930 -t utf-8
